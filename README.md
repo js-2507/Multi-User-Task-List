@@ -39,10 +39,10 @@ Built with Java 25 and SQLite.<br>
 <li>Add Dependencies: Download the <a href="https://github.com/xerial/sqlite-jdbc">sqlite-jdbc</a> JAR file and add it to your classpath.</li>
 <li>To deploy, do this in the intellij project (or project directory) terminal on your local machine<br>
   
-# 1. Compile<br>
+`#1. Compile`<br>
   
 `javac -cp "lib/*" src/*.java -d bin/`<br>
-# 2. Create a simple JAR<br>
+`#2. Create a simple JAR`<br>
 `jar cfe chore-app.jar Main -C bin .`<br>
 </li>
 <li>Then send the .jar file and the lib folder to your server (in your folder for the service)<br>
