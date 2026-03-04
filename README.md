@@ -33,24 +33,31 @@ Built with Java 25 and SQLite.<br>
 <h2>Installation and Setup</h2>
 <ol>
 <li>Prerequisites: Java 25 installed on server
-<li>Clone the repo: <br>`git clone https://github.com/your-username/chore-tracker.git
-cd chore-tracker`
+<li>Clone the repo: <br>
+  
+  `git clone https://github.com/js-2507/Multi-User-Task-Tracker.git`
 <li>Add Dependencies: Download the <a href="https://github.com/xerial/sqlite-jdbc">sqlite-jdbc</a> JAR file and add it to your classpath.</li>
 <li>To deploy, do this in the intellij project (or project directory) terminal on your local machine<br>
+  
 # 1. Compile<br>
+  
 `javac -cp "lib/*" src/*.java -d bin/`<br>
 # 2. Create a simple JAR<br>
 `jar cfe chore-app.jar Main -C bin .`<br>
 </li>
 <li>Then send the .jar file and the lib folder to your server (in your folder for the service)<br>
 you can use FileZilla or WinSCP for an easy GUI transfer or use the terminal
-<li>To start the .jar file, enter `java -cp "chore-app.jar:lib/*" Main`</li>
+<li>To start the .jar file, enter
+  
+  `java -cp "chore-app.jar:lib/*" Main`</li>
 <li>(Optional) To make it a systemd service (for best availability in case of power outage/restarting)<br>
-On your server, go to `/etc/systemd/system` and create a `chore.service` using `sudo nano`
+On your server, go to
+  
+  `/etc/systemd/system` and create a `chore.service` using `sudo nano`
 add this: <br><br>
 `[Unit]`
 `Description=Household Chore Tracker Service`<br>
-# Wait for the network to be ready before starting`<br>
+`# Wait for the network to be ready before starting`<br>
 `After=network.target`<br>
 
 `[Service]`<br>
