@@ -97,14 +97,14 @@ Ensure that your project's local dependency directory contains the necessary .ja
 ## Build the Executable JAR Locally
 
 Run the following commands inside your local project directory or IntelliJ IDEA built-in terminal to compile the source code and pack it into a portable package:
-<br>`# Step 1: Compile all Java source files into a 'bin' distribution directory
-javac -cp "lib/*" src/*.java -d bin/`
-
-`# Step 2: Create an executable JAR archive targeting the Main entrypoint
-jar cfe chore-app.jar Main -C bin .`
+<br>
+Step 1: Compile all Java source files into a 'bin' distribution directory 
+<br>`javac -cp "lib/*" src/*.java -d bin/`
+<br>Step 2: Create an executable JAR archive targeting the Main entrypoint
+<br>`jar cfe chore-app.jar Main -C bin .`
 
 ## 4. Transfer Files to Your Server
-
+**On your server, make a directory for the service, make note of it for later**<br>
 Deploy the generated application artifact along with its required dependency directory to your target production server environment using an SFTP client (such as FileZilla or WinSCP):
 
 ## 5. Executing the Application on the Server
