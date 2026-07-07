@@ -125,25 +125,25 @@ To ensure the chore management service remains highly available, runs silently i
 <br>`sudo nano /etc/systemd/system/chore.service`
 <p>2. Populate the configuration layout below (make sure to replace user and the companion working paths with your actual server account environment configurations):
 <br><p>
+
 <pre>
-
-`[Unit]
+[Unit]
 Description=Household Chore Tracker Service
-After=network.target`
+After=network.target
 
-`[Service]
+[Service]
 User=user
 WorkingDirectory=/home/user/chore-app
 ExecStart=/usr/bin/java -cp "chore-app.jar:lib/*" Main
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=chore-app`
+SyslogIdentifier=chore-app
 
-`[Install]
-WantedBy=multi-user.target`
-
+[Install]
+WantedBy=multi-user.target
 </pre>
+
 <p>
 3. Reload the tracking manager engine, flag the chore tracking script to start during the initial boot sequence, and engage the service right away:
 <br>
