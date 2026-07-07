@@ -74,9 +74,11 @@ add this: <br><br>
 Then do `sudo systemctl daemon-reload` and
 `sudo systemctl enable chore.service` and `sudo systemctl start chore.service`
 </li>
-</ol>-->
+</ol>--><p>
 
-## Installation and Setup
+---
+
+# ---Installation and Setup---
 
 ### Prerequisites
 * **Local Machine:** Java Development Kit (JDK 25) and Git installed.
