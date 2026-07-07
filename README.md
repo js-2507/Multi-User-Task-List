@@ -30,7 +30,7 @@ Built with Java 25 and SQLite.<br>
 
 <li>Frontend: Vanilla HTML5 and CSS3 
 </ul>
-<h2>Installation and Setup</h2>
+<!--<h2>Installation and Setup</h2>
 <ol>
 <li>Prerequisites: Java 25 installed on server
 <li>Clone the repo: <br>`git clone https://github.com/your-username/chore-tracker.git
@@ -74,7 +74,83 @@ add this: <br><br>
 Then do `sudo systemctl daemon-reload` and
 `sudo systemctl enable chore.service` and `sudo systemctl start chore.service`
 </li>
-</ol>
+</ol>-->
+
+## Installation and Setup
+
+### Prerequisites
+* **Local Machine:** Java Development Kit (JDK 25) and Git installed.
+* **Server:** Java Runtime Environment (JRE) or JDK installed.
+
+---
+
+### 1. Clone the Repository
+Clone the project files to your local development machine and navigate into the project root:
+
+`git clone [https://github.com/js-2507/Multi-User-Task-List.git](https://github.com/js-2507/Multi-User-Task-List.git)
+cd Multi-User-Task-List`
+## 2. Verify External Dependencies
+Ensure that your project's local dependency directory contains the necessary .jar archive files for the database driver and security features:
+<br>`sqlite-jdbc-*.jar`
+## Build the Executable JAR Locally
+
+Run the following commands inside your local project directory or IntelliJ IDEA built-in terminal to compile the source code and pack it into a portable package:
+<br>`# Step 1: Compile all Java source files into a 'bin' distribution directory
+javac -cp "lib/*" src/*.java -d bin/`
+
+`# Step 2: Create an executable JAR archive targeting the Main entrypoint
+jar cfe chore-app.jar Main -C bin .`
+
+## 4. Transfer Files to Your Server
+
+Deploy the generated application artifact along with its required dependency directory to your target production server environment using an SFTP client (such as FileZilla or WinSCP):
+
+## 5. Executing the Application on the Server
+   Option A: Running in the Foreground (For Testing)
+
+This locks your terminal window to the process. Closing your terminal or disconnecting from SSH will stop the application:
+<br>`java -cp "chore-app.jar:lib/*" Main`
+
+## Option B: Running in the Background (Persistent)
+
+To run the service silently in the background so it keeps executing even after you close your terminal or log out of your SSH session, use the nohup command:
+<br>`nohup java -cp "chore-app.jar:lib/*" Main > server.log 2>&1 &`
+
+# Production Deployment (systemd Service)
+
+To ensure the chore management service remains highly available, runs silently in the background, and automatically recovers from server reboots or system power outages, configure it as an official Ubuntu system service.
+<br><br>1. Create a new service tracking definition file:
+<br>`sudo nano /etc/systemd/system/chore.service`
+<p>2. Populate the configuration layout below (make sure to replace user and the companion working paths with your actual server account environment configurations):
+<br><p>
+
+`[Unit]
+Description=Household Chore Tracker Service
+After=network.target`
+
+`[Service]
+User=user
+WorkingDirectory=/home/user/chore-app
+ExecStart=/usr/bin/java -cp "chore-app.jar:lib/*" Main
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=chore-app`
+
+`[Install]
+WantedBy=multi-user.target`
+<p>
+3. Reload the tracking manager engine, flag the chore tracking script to start during the initial boot sequence, and engage the service right away:
+<br>
+
+`sudo systemctl daemon-reload
+sudo systemctl enable chore.service
+sudo systemctl start chore.service`
+<p>
+4. Confirm that your deployment profile launched successfully without active system blockages:
+<br>
+
+`sudo systemctl status chore.service`
 <h2>How to Use</h2>
 Service runs on port 8000, you can set up a reverse proxy and make a DNS record to attach a custom URL to make it easier to fnd<br>
 for web admin and use, <br>
