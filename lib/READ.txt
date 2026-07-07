@@ -1,0 +1,2 @@
+YOU NEED TO INSTALL SQLITE FOR JAVA TO RUN THIS:
+ https://sourceforge.net/projects/sqlite-jdbc-driver.mirror/
