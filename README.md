@@ -125,6 +125,7 @@ To ensure the chore management service remains highly available, runs silently i
 <br>`sudo nano /etc/systemd/system/chore.service`
 <p>2. Populate the configuration layout below (make sure to replace user and the companion working paths with your actual server account environment configurations):
 <br><p>
+<pre>
 
 `[Unit]
 Description=Household Chore Tracker Service
@@ -141,13 +142,18 @@ SyslogIdentifier=chore-app`
 
 `[Install]
 WantedBy=multi-user.target`
+
+</pre>
 <p>
 3. Reload the tracking manager engine, flag the chore tracking script to start during the initial boot sequence, and engage the service right away:
 <br>
 
-`sudo systemctl daemon-reload
+<pre>
+sudo systemctl daemon-reload
 sudo systemctl enable chore.service
-sudo systemctl start chore.service`
+sudo systemctl start chore.service
+</pre>
+
 <p>
 4. Confirm that your deployment profile launched successfully without active system blockages:
 <br>
